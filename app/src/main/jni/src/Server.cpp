@@ -155,9 +155,15 @@ void CreateDataList(Response& SendResponse) {
                 break;
             }
 
-            uintptr_t GameFacade = Read<uintptr_t>(libAddress + 0xABFF3C0);
+            LOGI("[DBG] libAddress=%p", (void*)libAddress);
+
+            uintptr_t GameFacade = Read<uintptr_t>(libAddress + 0xABFF6E0);
             LOGI("[DBG] GameFacade=%p", (void*)GameFacade);
-            if (GameFacade == 0) break;
+            uint32_t GameFacade32 = Read<uint32_t>(libAddress + 0xABFF6E0);
+            LOGI("[DBG] GameFacade32=%d", (void*)GameFacade32);
+            // uint64_t GameFacade64 = Read<uint64_t>(libAddress + 0xABFF6E0);
+            // LOGI("[DBG] GameFacade64=%lld", GameFacade64);
+            // if (GameFacade == 0) break;
 
             uintptr_t AccessClass = Read<uintptr_t>(GameFacade + 0x5C);
             if (AccessClass == 0) break;
@@ -170,10 +176,10 @@ void CreateDataList(Response& SendResponse) {
             if (m_Match == 0) break;
 
             auto MatchIsRunning = Read<int>(m_Match + 0xa8);
-            LOGI("[DBG] MatchIsRunning=%d", MatchIsRunning);
+            LOGI("[DBG] BYPASS PRA TESTE na linha 175:MatchIsRunning=%d", MatchIsRunning);
             // Simplificado: so prossegue se a partida estiver no estado correto (1)
-            if (MatchIsRunning != 1)
-                break;
+            // if (MatchIsRunning != 1)
+            //     break;
 
             localPlayer = Read<uintptr_t>(libAddress + 0x72942d4);
             LOGI("[DBG] localPlayer=%p", (void*)localPlayer);

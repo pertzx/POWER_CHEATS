@@ -1,22 +1,14 @@
-C:\POWER_CHEATS\app\src\main\jni/obj/local/arm64-v8a/objs/Fucker/src/Server.o: \
-  C:/POWER_CHEATS/app/src/main/jni/src/Server.cpp \
-  C:/POWER_CHEATS/app/src/main/jni/src/Server.h \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/stdio.h \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__config \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/wchar.h \
-  C:/POWER_CHEATS/app/src/main/jni/src/Includes/Logger.h \
-  C:/POWER_CHEATS/app/src/main/jni/src/Unity/Quaternion.hpp \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/math.h \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iostream \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ios \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iosfwd \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__locale \
+C:\POWER_CHEATS\app\src\main\jni/obj/local/arm64-v8a/objs/joudadooh/src/frnetlib/Sha1.o: \
+  C:/POWER_CHEATS/app/src/main/jni/src/frnetlib/Sha1.cpp \
+  C:/POWER_CHEATS/app/src/main/jni/src/Includes/frnetlib/Sha1.h \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/string \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__config \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/string_view \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__string \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/algorithm \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/initializer_list \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cstddef \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/version \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/type_traits \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cstring \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/string.h \
@@ -24,8 +16,9 @@ C:\POWER_CHEATS\app\src\main\jni/obj/local/arm64-v8a/objs/Fucker/src/Server.o: \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__tuple \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cstdint \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/stdint.h \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/version \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__debug \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iosfwd \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/wchar.h \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/memory \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/typeinfo \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/exception \
@@ -48,11 +41,18 @@ C:\POWER_CHEATS\app\src\main\jni/obj/local/arm64-v8a/objs/Fucker/src/Server.o: \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/functional \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/bit \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cstdio \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/stdio.h \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cwchar \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cwctype \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cctype \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ctype.h \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/wctype.h \
+  C:/POWER_CHEATS/app/src/main/jni/src/Includes/frnetlib/NetworkEncoding.h \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/csignal \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/sstream \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ostream \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ios \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__locale \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/mutex \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__mutex_base \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/system_error \
@@ -61,59 +61,24 @@ C:\POWER_CHEATS\app\src\main\jni/obj/local/arm64-v8a/objs/Fucker/src/Server.o: \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/locale.h \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/support/android/locale_bionic.h \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/streambuf \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/istream \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ostream \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/locale \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cstdarg \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__bsd_locale_fallbacks.h \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/bitset \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__bit_reference \
-  C:/POWER_CHEATS/app/src/main/jni/src/Unity/Vector3.hpp \
-  C:/POWER_CHEATS/app/src/main/jni/src/Socket/server.h \
-  C:/POWER_CHEATS/app/src/main/jni/src/Socket/Const.h \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/vector \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__split_buffer \
-  C:/POWER_CHEATS/app/src/main/jni/src/Unity/Unity.h \
-  C:/POWER_CHEATS/app/src/main/jni/src/Unity/Vector2.hpp \
-  C:/POWER_CHEATS/app/src/main/jni/src/Unity/Color.hpp \
-  C:/POWER_CHEATS/app/src/main/jni/src/Unity/Rect.hpp \
-  C:/POWER_CHEATS/app/src/main/jni/src/Unity/ESP.h \
-  C:/POWER_CHEATS/app/src/main/jni/src/Includes/Utils.h \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/sstream \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/istream \
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iomanip \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/fstream \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/filesystem \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/stack \
   C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/deque \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iomanip \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/inttypes.h \
-  C:/POWER_CHEATS/app/src/main/jni/src/BooleanServer.h \
-  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/thread \
-  C:/POWER_CHEATS/app/src/main/jni/src/Includes/Encrypt/oxorany_include.h \
-  C:/POWER_CHEATS/app/src/main/jni/src/Includes/Encrypt/oxorany.h
+  C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__split_buffer
 
-C:/POWER_CHEATS/app/src/main/jni/src/Server.h:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/stdio.h:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__config:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/wchar.h:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Includes/Logger.h:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Unity/Quaternion.hpp:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/math.h:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iostream:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ios:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iosfwd:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__locale:
+C:/POWER_CHEATS/app/src/main/jni/src/Includes/frnetlib/Sha1.h:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/string:
+
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__config:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/string_view:
 
@@ -124,6 +89,8 @@ C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/alg
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/initializer_list:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cstddef:
+
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/version:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/type_traits:
 
@@ -139,9 +106,11 @@ C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cst
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/stdint.h:
 
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/version:
-
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__debug:
+
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iosfwd:
+
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/wchar.h:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/memory:
 
@@ -187,6 +156,8 @@ C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/bit
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cstdio:
 
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/stdio.h:
+
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cwchar:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cwctype:
@@ -196,6 +167,18 @@ C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cct
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ctype.h:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/wctype.h:
+
+C:/POWER_CHEATS/app/src/main/jni/src/Includes/frnetlib/NetworkEncoding.h:
+
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/csignal:
+
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/sstream:
+
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ostream:
+
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ios:
+
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__locale:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/mutex:
 
@@ -213,10 +196,6 @@ C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/sup
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/streambuf:
 
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/istream:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/ostream:
-
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/locale:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/cstdarg:
@@ -227,29 +206,9 @@ C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/bit
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__bit_reference:
 
-C:/POWER_CHEATS/app/src/main/jni/src/Unity/Vector3.hpp:
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/istream:
 
-C:/POWER_CHEATS/app/src/main/jni/src/Socket/server.h:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Socket/Const.h:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/vector:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__split_buffer:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Unity/Unity.h:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Unity/Vector2.hpp:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Unity/Color.hpp:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Unity/Rect.hpp:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Unity/ESP.h:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Includes/Utils.h:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/sstream:
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iomanip:
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/fstream:
 
@@ -259,14 +218,4 @@ C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/sta
 
 C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/deque:
 
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/iomanip:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/inttypes.h:
-
-C:/POWER_CHEATS/app/src/main/jni/src/BooleanServer.h:
-
-C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/thread:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Includes/Encrypt/oxorany_include.h:
-
-C:/POWER_CHEATS/app/src/main/jni/src/Includes/Encrypt/oxorany.h:
+C:/Android/Sdk/ndk/25.1.8937393/build/../sources/cxx-stl/llvm-libc++/include/__split_buffer:

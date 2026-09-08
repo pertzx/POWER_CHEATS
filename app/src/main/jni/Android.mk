@@ -1,15 +1,24 @@
 LOCAL_PATH := $(call my-dir)
 
-# --- Define CURL Prebuilt ---
+# ============================================================
+# CURL
+# ============================================================
+
 include $(CLEAR_VARS)
+
 LOCAL_MODULE := curl_static
 LOCAL_SRC_FILES := src/static/curl/$(TARGET_ARCH_ABI)/libcurl.a
+
 include $(PREBUILT_STATIC_LIBRARY)
 
-# --- Module: palmeiras ---
+
+# ============================================================
+# MODULE: joudadooh
+# ============================================================
+
 include $(CLEAR_VARS)
 
-LOCAL_MODULE    := joudadooh
+LOCAL_MODULE := joudadooh
 
 LOCAL_SRC_FILES := \
     src/Client.cpp \
@@ -33,27 +42,74 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/src/Socket \
     $(LOCAL_PATH)/src/Unity
 
-# Added -frtti to fix the dynamic_cast error
-LOCAL_CPPFLAGS  := -fvisibility=hidden -DNDEBUG -std=c++17 -fexceptions -frtti
-LOCAL_CFLAGS    := -Wno-error=format-security -fpermissive -fvisibility=hidden -fexceptions -frtti -DNDEBUG
+LOCAL_CPPFLAGS := \
+    -fvisibility=hidden \
+    -DNDEBUG \
+    -std=c++17 \
+    -fexceptions \
+    -frtti
 
-# Moved -latomic here to fix the linker warning
-LOCAL_LDFLAGS   := -Wl,--exclude-libs,ALL -s -latomic
-LOCAL_LDLIBS    := -llog -landroid -lz
+LOCAL_CFLAGS := \
+    -Wno-error=format-security \
+    -fpermissive \
+    -fvisibility=hidden \
+    -DNDEBUG
+
+LOCAL_LDFLAGS := \
+    -Wl,--exclude-libs,ALL \
+    -s \
+    -latomic
+
+LOCAL_LDLIBS := \
+    -llog \
+    -landroid \
+    -lz
 
 LOCAL_STATIC_LIBRARIES := curl_static
-LOCAL_ARM_MODE  := arm
+
+LOCAL_ARM_MODE := arm
 
 include $(BUILD_SHARED_LIBRARY)
 
-# --- Module: UtilityHelper ---
+
+# ============================================================
+# MODULE: Fucker
+# ============================================================
+
 include $(CLEAR_VARS)
-LOCAL_MODULE    := Fucker
-LOCAL_SRC_FILES := src/Server.cpp src/Socket/server.cpp
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/src $(LOCAL_PATH)/src/Includes
-LOCAL_CPPFLAGS  := -fvisibility=hidden -DNDEBUG -std=c++17 -fexceptions -frtti
-LOCAL_CFLAGS    := -Wno-error=format-security -fpermissive -fvisibility=hidden -fexceptions -frtti -DNDEBUG
-LOCAL_LDFLAGS   := -Wl,--exclude-libs,ALL -s
-LOCAL_LDLIBS    := -llog -lz
-LOCAL_ARM_MODE  := arm
+
+LOCAL_MODULE := Fucker
+
+LOCAL_SRC_FILES := \
+    src/Server.cpp \
+    src/Socket/server.cpp
+
+LOCAL_C_INCLUDES := \
+    $(LOCAL_PATH)/src \
+    $(LOCAL_PATH)/src/Includes
+
+LOCAL_CPPFLAGS := \
+    -fvisibility=hidden \
+    -DNDEBUG \
+    -std=c++17 \
+    -fexceptions \
+    -frtti
+
+LOCAL_CFLAGS := \
+    -Wno-error=format-security \
+    -fpermissive \
+    -fvisibility=hidden \
+    -DNDEBUG
+
+LOCAL_LDFLAGS := \
+    -Wl,--exclude-libs,ALL \
+    -s \
+    -lc++_static
+
+LOCAL_LDLIBS := \
+    -llog \
+    -lz
+
+LOCAL_ARM_MODE := arm
+
 include $(BUILD_EXECUTABLE)
