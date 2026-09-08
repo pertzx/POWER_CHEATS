@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\src",
+    "\\app\\src\\main",
+    "\\app\\src\\main\\jni",
+    "\\app\\src\\main\\jni\\src"
+  ],
+  "SelectedNode": "\\app\\src\\main\\jni\\src\\Server.cpp",
+  "PreviewInSolutionExplorer": false
+}

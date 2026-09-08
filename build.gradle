@@ -1,0 +1,10 @@
+// Remove the buildscript { repositories { ... } } block if it exists
+// Remove the allprojects { repositories { ... } } block
+
+plugins {
+    // Keep your plugins here
+    id 'com.android.application' version '8.2.0' apply false
+    id 'com.android.library' version '8.2.0' apply false
+}
+
+// The rest of your tasks...

@@ -1,0 +1,35 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/POWER_CHEATS/app/src/main/jni/src/Server.cpp",
+      "selection": {
+        "end": {
+          "column": 1,
+          "index": 21117,
+          "line": 330
+        },
+        "start": {
+          "column": 1,
+          "index": 21117,
+          "line": 330
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/POWER_CHEATS/app/src/main/jni/src/Client.cpp",
+      "selection": {
+        "end": {
+          "column": 27,
+          "index": 257,
+          "line": 8
+        },
+        "start": {
+          "column": 20,
+          "index": 250,
+          "line": 8
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/POWER_CHEATS/app/src/main/jni/src/Server.cpp"
+}

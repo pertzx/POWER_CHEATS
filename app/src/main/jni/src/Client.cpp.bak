@@ -1,0 +1,344 @@
+#include <pthread.h>
+#include <jni.h>
+#include <src/Socket/client.h>
+#include "src/Includes/obfuscate.h"
+#include <sys/stat.h>
+#include <src/Widgets/ImportWidgets.h>
+#include <src/Includes/http.h>
+#include "src/Unity/Vector3.hpp"
+#include "src/Unity/Vector2.hpp"
+#include "src/Unity/Unity.h"
+#include "src/Unity/ESP.h"
+#include "Includes/Logger.h"
+#include "Includes/Utils.h"
+#include "src/Widgets/Methods.h"
+
+#include "Client.h"
+#include "BooleanClient.h"
+
+
+#include <curl/curl.h>
+#include "src/Includes/json.h" 
+using json = nlohmann::json;
+
+struct MemoryChunk {
+    char *memory;
+    size_t size;
+};
+
+static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp) {
+    size_t realsize = size * nmemb;
+    struct MemoryChunk *mem = (struct MemoryChunk *)userp;
+    char *ptr = (char *)realloc(mem->memory, mem->size + realsize + 1);
+    if (!ptr) return 0;
+    mem->memory = ptr;
+    memcpy(&(mem->memory[mem->size]), contents, realsize);
+    mem->size += realsize;
+    mem->memory[mem->size] = 0;
+    return realsize;
+}
+
+std::string XOR_decryption(std::string value, std::string key) {
+    std::string text = "";
+    int klen = key.length();
+    for (int v = 0; v < value.length(); v++) {
+        text += value[v] ^ key[v % klen];
+    }
+    return text;
+}
+
+std::string get_Key_From_Public(std::string publicKey) {
+    if (publicKey.length() < 98) return "000000000";
+    std::string keyDes = "";
+    keyDes += publicKey[58 - 1];
+    keyDes += publicKey[62 - 1];
+    keyDes += publicKey[10 - 1];
+    keyDes += publicKey[47 - 1];
+    keyDes += publicKey[20 - 1];
+    keyDes += publicKey[33 - 1];
+    keyDes += publicKey[87 - 1];
+    keyDes += publicKey[98 - 1];
+    keyDes += publicKey[14 - 1];
+    return keyDes;
+}
+
+#define game_package OBFUSCATE("com.dts.freefiremax")
+#define LibBypass OBFUSCATE("libanogs.so")
+
+struct {
+    bool connectClient = false;
+    std::string server_msg = "Waiting..."; 
+} Connection;
+
+ESP espOverlay;
+
+void DrawESP(ESP esp) {
+    auto screenHeight = esp.getHeight();
+    auto screenWidth = esp.getWidth();
+    if (!isConnected()) return;
+
+    auto response = getData(screenWidth, screenHeight);
+    if (!response.Success || response.PlayerCount <= 0) return;
+
+    float globalThickness = 1.0f;
+
+    for (int i = 0; i < response.PlayerCount; i++) {
+        auto player = response.Players[i];
+        if (player.Head == Vector3::Zero() || player.Toe == Vector3::Zero()) continue;
+        if (!Actived.activar) continue;
+
+        float distance = player.Distancia;
+        if (distance < 0.1f || distance > 150.0f) continue;
+
+        // --- POSITIONING ---
+        float headToFeetHeight = std::abs(player.Toe.Y - player.Head.Y);
+        float boxHeight = headToFeetHeight * 1.15f; 
+        float width = boxHeight * 0.48f;
+        float boxY = player.Head.Y - (boxHeight * 0.12f);
+        float boxX = player.Head.X - (width / 2.0f);
+
+        Color currentBoxColor = player.IsCaido ? Color::Red() : pEspPlayer.espColor;
+        Color strokeColor = Color(0, 0, 0, 255);
+        float fSize = pEspPlayer.textSize; // This is controlled by seekbar
+        
+        // --- DRAW LINE ---
+        if (pEspPlayer.espLinha) {
+            Vector3 lineStart, lineEnd;
+            if (pEspPlayer.lineType == LINE_TOP) lineStart = Vector3(screenWidth / 2, 0, 0);
+            else if (pEspPlayer.lineType == LINE_CENTER) lineStart = Vector3(screenWidth / 2, screenHeight / 2, 0);
+            else lineStart = Vector3(screenWidth / 2, screenHeight, 0);
+
+            lineEnd = (pEspPlayer.lineType == LINE_BOTTOM) ? Vector3(player.Head.X, boxY + boxHeight, 0) : Vector3(player.Head.X, boxY, 0);
+            esp.DrawLine(currentBoxColor, globalThickness, lineStart, lineEnd);
+        }
+
+        // --- DRAW BOX ---
+        if (pEspPlayer.espCaixa) {
+            Rect playerRect(boxX, boxY, width, boxHeight);
+            if (pEspPlayer.boxType == BOX_FILLED || pEspPlayer.boxType == BOX_ROUNDED) {
+                Color fill = currentBoxColor; fill.a = 70;
+                esp.DrawFilledRect(fill, Vector3(boxX, boxY, 0), width, boxHeight);
+            }
+            if (pEspPlayer.boxType == BOX_CORNER) esp.DrawBox4Line(boxX, boxY, width, boxHeight, currentBoxColor, globalThickness);
+            else esp.DrawBox(currentBoxColor, globalThickness, playerRect);
+        }
+
+        // --- DRAW HEALTH --- (Increased width slightly)
+        if (pEspPlayer.espHealth) {
+            // Increased from 2.5/4.0 to 4.5/6.0
+            float hBarW = (distance > 80.0f) ? 4.5f : 6.0f; 
+            float hBarX = boxX - (hBarW + 6);
+            float hMax = player.Name ? 100.0f : 200.0f; 
+            esp.DrawVerticalHealthBar(Vector2(hBarX, boxY), boxHeight, hMax, player.Health, hBarW, false);
+        }
+
+        // --- DRAW PLAYER NAME --- (Use seekbar-controlled size)
+        if (pEspPlayer.espName && player.PlayerName[0] != '\0') {
+            // Use the fSize from seekbar (range 10-15 as defined in your widget)
+            float fSizeName = fSize;
+            
+            // Position text based on seekbar-controlled size
+            float nameY = boxY - fSizeName;
+            
+            if (player.Head.X > 0 && player.Head.X < screenWidth) {
+                // Draw outline/stroke
+                esp.DrawText(strokeColor, player.PlayerName, Vector2(player.Head.X - 1, nameY - 1), fSizeName);
+                esp.DrawText(strokeColor, player.PlayerName, Vector2(player.Head.X + 1, nameY + 1), fSizeName);
+                esp.DrawText(strokeColor, player.PlayerName, Vector2(player.Head.X - 1, nameY + 1), fSizeName);
+                esp.DrawText(strokeColor, player.PlayerName, Vector2(player.Head.X + 1, nameY - 1), fSizeName);
+                
+                // Draw main text
+                esp.DrawText(currentBoxColor, player.PlayerName, Vector2(player.Head.X, nameY), fSizeName);
+            }
+        }
+
+        // --- DRAW DISTANCE --- (Use seekbar-controlled size)
+        if (pEspPlayer.espDistance && !player.IsCaido) {
+            std::string dStr = std::to_string((int)distance) + "M";
+            // Use the same fSize from seekbar
+            float dY = boxY + boxHeight + fSize + 8; 
+
+            esp.DrawText(strokeColor, dStr.c_str(), Vector2(player.Head.X - 1, dY - 1), fSize);
+            esp.DrawText(strokeColor, dStr.c_str(), Vector2(player.Head.X + 1, dY + 1), fSize);
+            esp.DrawText(strokeColor, dStr.c_str(), Vector2(player.Head.X - 1, dY + 1), fSize);
+            esp.DrawText(strokeColor, dStr.c_str(), Vector2(player.Head.X + 1, dY - 1), fSize);
+            esp.DrawText(currentBoxColor, dStr.c_str(), Vector2(player.Head.X, dY), fSize);
+        }
+    }
+}
+
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_thiago_php_Floater_Functions(JNIEnv *env, jclass clazz) {
+    Widget widget = Widget(env);
+
+    widget.Category(OBFUSCATE("Memory Menu"));
+    widget.Switch(OBFUSCATE("Enable Functions"), 1);
+    widget.Switch(OBFUSCATE("Aim Silent"), 8);
+    widget.SeekBar(OBFUSCATE("Aim Fov"), 0, 360, OBFUSCATE(""), 9);
+    widget.Switch(OBFUSCATE("Aim Lock"), 6);
+
+    widget.Category(OBFUSCATE("Esp Menu"));
+    widget.Switch(OBFUSCATE("Draw Line"), 11);
+    widget.Switch(OBFUSCATE("Draw Box"), 12);
+    widget.Switch(OBFUSCATE("Draw Distance"), 13);
+    widget.Switch(OBFUSCATE("Draw Name"), 21);
+    widget.Switch(OBFUSCATE("Draw Health"), 19);
+    
+    widget.Category(OBFUSCATE("Esp Config"));
+    widget.SeekBar(OBFUSCATE("ESP Color"), 0, 9, OBFUSCATE("Color"), 16);
+    widget.SeekBar(OBFUSCATE("Box Type"), 0, 3, OBFUSCATE("BoxType"), 17);
+    widget.SeekBar(OBFUSCATE("Line Type"), 0, 2, OBFUSCATE("LineType"), 18);
+    widget.SeekBar(OBFUSCATE("Text Size"), 10, 15, OBFUSCATE(""), 20);
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_thiago_php_Floater_ChangesID(JNIEnv *env, jclass clazz, jint id, jint value) {
+    switch (id) {
+        case 1: Actived.activar = !Actived.activar; SendBool(3, Actived.activar); break;
+        case 2: pPlayer.aimbot = !pPlayer.aimbot; SendBool(5, pPlayer.aimbot); break;
+        case 3: pPlayer.fovawm = !pPlayer.fovawm; SendBool(22, pPlayer.fovawm); break;
+        case 6: pPlayer.aimbotlock = !pPlayer.aimbotlock; SendBool(54, pPlayer.aimbotlock); break;
+        case 8: pPlayer.silen4a = !pPlayer.silen4a; SendBool(57, pPlayer.silen4a); break;
+        case 9: pPlayer.AimFov = value; SendFloat(58, pPlayer.AimFov); break;
+        case 10: pPlayer.AimDistance = value; SendFloat(59, pPlayer.AimDistance); break;
+        case 11: pEspPlayer.espLinha = !pEspPlayer.espLinha; break;
+        case 12: pEspPlayer.espCaixa = !pEspPlayer.espCaixa; break;
+        case 13: pEspPlayer.espDistance = !pEspPlayer.espDistance; break;
+        case 14: pEspPlayer.espSkeleton = !pEspPlayer.espSkeleton; break;
+        case 15: pEspPlayer.espIden360 = !pEspPlayer.espIden360; break;
+        case 16:
+            if (value == 0) pEspPlayer.espColor = Color(255, 255, 255, 255);
+            else if (value == 1) pEspPlayer.espColor = Color(0, 255, 0, 255);
+            else if (value == 2) pEspPlayer.espColor = Color(0, 0, 255, 255);
+            else if (value == 3) pEspPlayer.espColor = Color(255, 0, 0, 255);
+            else if (value == 4) pEspPlayer.espColor = Color(0, 0, 0, 255);
+            else if (value == 5) pEspPlayer.espColor = Color(255, 255, 0, 255);
+            else if (value == 6) pEspPlayer.espColor = Color(0, 255, 255, 255);
+            else if (value == 7) pEspPlayer.espColor = Color(255, 0, 255, 255);
+            else if (value == 8) pEspPlayer.espColor = Color(128, 128, 128, 255);
+            else if (value == 9) pEspPlayer.espColor = Color(160, 32, 240, 255);
+            break;
+        case 17: pEspPlayer.boxType = static_cast<BoxType>(value); break;
+        case 18: pEspPlayer.lineType = static_cast<LineType>(value); break;
+        case 19: pEspPlayer.espHealth = !pEspPlayer.espHealth; break;
+        case 20: pEspPlayer.textSize = (float)value; break;
+        case 21: pEspPlayer.espName = !pEspPlayer.espName; break;
+    }
+}
+
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_thiago_php_Floater_PxbftKZXivSr(JNIEnv *env, jclass type, jobject espView, jobject canvas, jint width, jint height) {
+    ESP localEsp = ESP(env, espView, canvas);
+    if (localEsp.isValid()) { DrawESP(localEsp); }
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_thiago_php_Floater_ftKZXivSr(JNIEnv *env, jclass clazz, jobject ctx) {
+    if (!Connection.connectClient) {
+        startClient();
+        Connection.connectClient = true;
+        Toast(env, ctx, "ACTIVATING...", 1, 1);
+        Toast(env, ctx, "ACTIVATED", 1, 1);
+    }
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_thiago_php_Floater_ftKwCvSr(JNIEnv *env, jclass clazz) {
+    stopClient();
+}
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_thiago_php_LoginActivity_apkHashUrl(JNIEnv *env, jobject thiz) {
+    return env->NewStringUTF("https://rewardff.com.br/apkhash.php");
+}
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_thiago_php_LoginActivity_updateUrl(JNIEnv *env, jobject thiz) {
+    return env->NewStringUTF("https://rewardff.com.br/update.php");
+}
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_thiago_php_Auth_URL(JNIEnv *env, jobject thiz) {
+    return env->NewStringUTF("https://www.hgcheats.myvippanel.fun/connect");
+}
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_thiago_php_Auth_nativeLogin(JNIEnv *env, jobject thiz, jstring uKey, jstring uHwid) {
+    const char *key = env->GetStringUTFChars(uKey, 0);
+    const char *hwid = env->GetStringUTFChars(uHwid, 0);
+
+    CURL *curl;
+    struct MemoryChunk chunk;
+    chunk.memory = (char *)malloc(1);
+    chunk.size = 0;
+
+    curl = curl_easy_init();
+    if (curl) {
+        json requestData;
+        requestData["game"] = "FreeFire"; 
+        requestData["key"] = key;
+        requestData["hwid"] = hwid;
+        requestData["publicKey"] = "Vm8Lk7Uj2JmsjCPVPVjrLa7zgfx3uz9EVm8Lk7Uj2JmsjCPVPVjrLa7zgfx3uz9E";
+
+        std::string jsonStr = requestData.dump();
+
+        curl_easy_setopt(curl, CURLOPT_URL, "https://www.hgcheats.myvippanel.fun/connect");
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonStr.c_str());
+        
+        struct curl_slist *headers = NULL;
+        headers = curl_slist_append(headers, "Content-Type: application/json");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
+        
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+        curl_easy_setopt(curl, CURLOPT_TIMEOUT, 30L);
+
+        if (curl_easy_perform(curl) == CURLE_OK) {
+            try {
+                json response = json::parse(chunk.memory);
+                if (response["status"] == true) {
+                    std::string enc_msg = response["auth"]["message"];
+                    std::string pub_key = response["auth"]["token_access"];
+                    
+                    // DECRYPTION PROCESS
+                    std::string dec_msg = XOR_decryption(enc_msg, get_Key_From_Public(pub_key));
+
+                    // FORCE LOG TO SYSTEM (Look for "DEBUG_AUTH" in Logcat)
+                    __android_log_print(ANDROID_LOG_ERROR, "DEBUG_AUTH", "Decrypted: %s", dec_msg.c_str());
+
+                    // Flexible check: If server said status=true, we allow it
+                    // Or change "Success" to whatever appears in your Logcat
+                    if (dec_msg.find("Success") != std::string::npos || dec_msg.length() > 0) {
+                        Connection.server_msg = response["message"];
+                    } else {
+                        Connection.server_msg = "Security Validation Failed";
+                    }
+                } else {
+                    Connection.server_msg = response["message"];
+                }
+            } catch (...) {
+                Connection.server_msg = "Parser Error";
+            }
+        } else {
+            Connection.server_msg = "Connect Error";
+        }
+        curl_slist_free_all(headers);
+        curl_easy_cleanup(curl);
+    }
+    free(chunk.memory);
+    env->ReleaseStringUTFChars(uKey, key);
+    env->ReleaseStringUTFChars(uHwid, hwid);
+    return env->NewStringUTF(Connection.server_msg.c_str());
+}

@@ -1,0 +1,65 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/src/POWER_CHEATS/build.gradle",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 318,
+          "line": 10
+        },
+        "start": {
+          "column": 0,
+          "index": 318,
+          "line": 10
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/src/POWER_CHEATS/gradle.properties",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 331,
+          "line": 9
+        },
+        "start": {
+          "column": 0,
+          "index": 331,
+          "line": 9
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/src/POWER_CHEATS/app/build.gradle",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 1668,
+          "line": 60
+        },
+        "start": {
+          "column": 0,
+          "index": 1668,
+          "line": 60
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/src/POWER_CHEATS/settings.gradle",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        },
+        "start": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/src/POWER_CHEATS/build.gradle"
+}

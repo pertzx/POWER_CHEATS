@@ -1,0 +1,95 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/MIUI/POWER_CHEATS/app/src/main/jni/src/Client.cpp",
+      "selection": {
+        "end": {
+          "column": 51,
+          "index": 1797,
+          "line": 64
+        },
+        "start": {
+          "column": 51,
+          "index": 1797,
+          "line": 64
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/MIUI/POWER_CHEATS/app/src/main/java/com/reaper/xxx/Initialize.java",
+      "selection": {
+        "end": {
+          "column": 23,
+          "index": 23,
+          "line": 0
+        },
+        "start": {
+          "column": 23,
+          "index": 23,
+          "line": 0
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/MIUI/POWER_CHEATS/app/src/main/jni/Android.mk",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        },
+        "start": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/MIUI/POWER_CHEATS/app/src/main/AndroidManifest.xml",
+      "selection": {
+        "end": {
+          "column": 50,
+          "index": 671,
+          "line": 14
+        },
+        "start": {
+          "column": 31,
+          "index": 652,
+          "line": 14
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/MIUI/POWER_CHEATS/app/src/main/jni/src/magnet+ server.cpp",
+      "selection": {
+        "end": {
+          "column": 53,
+          "index": 28231,
+          "line": 550
+        },
+        "start": {
+          "column": 53,
+          "index": 28231,
+          "line": 550
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/MIUI/POWER_CHEATS/app/src/main/jni/src/Server.cpp",
+      "selection": {
+        "end": {
+          "column": 53,
+          "index": 19625,
+          "line": 282
+        },
+        "start": {
+          "column": 53,
+          "index": 19625,
+          "line": 282
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/MIUI/POWER_CHEATS/app/src/main/java/com/reaper/xxx/Initialize.java"
+}
